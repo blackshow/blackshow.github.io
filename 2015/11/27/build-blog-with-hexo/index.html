@@ -164,22 +164,7 @@ var _hmt = _hmt || [];
 <p>至此，使用 <a href="http://www.blackshow.me" target="_blank" rel="external">http://www.blackshow.me</a> 就可以访问我的博客了，但是如果是用顶级域名 <a href="http://blackshow.me">http://blackshow.me</a> ,则访问的是VPS，该怎么办?<br>由于不能gitcafe现在只支持CNAME,不支持A记录了.所以不能把blackshow.me直接指向github或gitcafe,blackshow.me指向的是我的vps.<br>只要把访问 <a href="http://blackshow.me">http://blackshow.me</a> 的请求全部转发到 <a href="http://www.blackshow.me" target="_blank" rel="external">http://www.blackshow.me</a> 就行了.</p>
 <h1 id="使用nginx设置转发">使用nginx设置转发</h1><p>首先在vps上安装了nginx.<br>修改/etc/nginx/conf.d/default.conf,<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    #设置server_name</span><br><span class="line">    server_name  blackshow.me,www.blackshow.me;</span><br><span class="line">    #判断请求的地址如果包含blackshow.me就转发到www.blackshow.me</span><br><span class="line">    if ($host ~* blackshow.me) &#123;</span><br><span class="line">        rewrite ^/(.*)$ http://www.blackshow.me/$1 permanent;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样所有请求到 <a href="http://blackshow.me">http://blackshow.me</a> 的请求,就全部自动转到 <a href="http://www.blackshow.me" target="_blank" rel="external">http://www.blackshow.me</a> 了.</p>
-<h1 id="补充:使用Webstorm编辑Markdown">补充:使用Webstorm编辑Markdown</h1><p>Markdown的编辑器,我试了几个,比如Mou,CMDMarkdown,MacMarkdown,后来发现都没有Webstorm方便.<br>当然,用Intellij、PhpStorm这些Jetbrains系的IDE都是一样的.<br>我现在用WebStorm写Markdown,是这样配置的:</p>
-<ul>
-<li>首先你要安装一下Markdown的插件，让你的IDE支持Markdown.</li>
-<li>打开 <code>Settings</code> &gt; <code>Editor</code> &gt; <code>File and code Templates</code>,新建一个Markdown的Templates,我的Template配置如下:</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">title: <span class="variable">$&#123;title&#125;</span></span><br><span class="line">date: <span class="variable">$&#123;YEAR&#125;</span>-<span class="variable">$&#123;MONTH&#125;</span>-<span class="variable">$&#123;DAY&#125;</span> <span class="variable">$&#123;HOUR&#125;</span>:<span class="variable">$&#123;MINUTE&#125;</span>:<span class="number">31</span></span><br><span class="line">description: <span class="variable">$&#123;description&#125;</span></span><br><span class="line">categories: <span class="variable">$&#123;categories&#125;</span></span><br><span class="line">tags: [<span class="variable">$&#123;tags&#125;</span>] </span><br><span class="line">toc: <span class="variable">$&#123;isTocAllowed&#125;</span></span><br><span class="line">feature: <span class="variable">$&#123;thumbnails_url&#125;</span></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
-<p>这样以后我就不用通过hexo n 来创建新文章了.右键点击hexo/source/_posts,选择 <code>new</code> &gt; <code>Markdown</code>:<br><img src="http://7xofqj.com1.z0.glb.clouddn.com/markdown_file_header.png" alt="alt"><br>全部输入完毕，点击ok，文章的头部就生成好了.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: Hexo搭建博客</span><br><span class="line">date: <span class="number">2015</span>-<span class="number">11</span>-<span class="number">27</span> <span class="number">12</span>:<span class="number">01</span>:<span class="number">31</span></span><br><span class="line">description: 本文主要介绍我在搭建Hexo的时候遇到的问题和解决方法,搭建过程只是简单描述.</span><br><span class="line">categories: code</span><br><span class="line">tags: [hexo,github] </span><br><span class="line">toc: <span class="literal">true</span></span><br><span class="line">feature: http://<span class="number">7</span>xofqj.com1.z0.glb.clouddn.com/avatar_pixiel.png-thumbnails </span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用Live Templates<br>我最终选择用Webstorm来写博客而没有用其他Markdown编辑器主要是因为IDE的Live Templates.<br>请参考一下<a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">Hexo的Tag Plugins</a>,这些标签插件,如果手写的话，无疑问是一种折磨.<br>这时候我们可以用Live Templates解决了.</li>
-</ul>
-<ol>
-<li>打开 <code>Settings</code> &gt; <code>Editor</code> &gt; <code>Live Templates</code>,点击 <code>+</code> ,新建一个Template Group,取名 <code>Markdown</code>.</li>
-<li>选择 <code>Markdown</code> ,点击 <code>+</code>,新建一个Live Template,以代码块插件为例,如下图:<br><img src="http://7xofqj.com1.z0.glb.clouddn.com/codeblock.png" alt="alt"><br><code>apply</code> 保存,然后右键点击 <code>cb</code> ,选择 <code>Change context</code> ,指定Live Template生效的范围.</li>
-<li>保存之后,输入c应该就会有提示了,输入cb然后Tab,你懂的。。。</li>
-</ol>
+<h1 id="编辑器">编辑器</h1><p>参考我的另一篇文章<a href="/2015/11/30/hexo-cheats#写作">Hexo使用心得(持续更新)</a>.</p>
 <h1 id="图床">图床</h1><p>我用的七牛,认证通过以后10G的空间.Mac OS X 下上传图片我使用的七牛提供的qsync命令行工具,一句命令直接同步整个文件夹.</p>
 <p>基本上我搭建Hexo博客就这些东西了,如果有任何疑问,欢迎在下面给我留言~</p>
 	  
@@ -262,7 +247,7 @@ var _hmt = _hmt || [];
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/Front/">Front<span>2</span></a></li>
+    <li><a href="/categories/Front/">Front<span>3</span></a></li>
   </li>
 
     </ul>
@@ -275,7 +260,7 @@ var _hmt = _hmt || [];
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/github/">github<span>1</span></a></li> <li><a href="/tags/hexo/">hexo<span>2</span></a></li>
+  <li><a href="/tags/github/">github<span>1</span></a></li> <li><a href="/tags/hexo/">hexo<span>3</span></a></li>
     </ul>
 	</div>
 		
@@ -286,7 +271,7 @@ var _hmt = _hmt || [];
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
 		   <span class="toc-title">Contents</span>
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#为什么要搭建一个独立博客"><span class="toc-article-text">为什么要搭建一个独立博客</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#Hexo"><span class="toc-article-text">Hexo</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#域名设置"><span class="toc-article-text">域名设置</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#DNS设置"><span class="toc-article-text">DNS设置</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#部署到github_~和gitcafe"><span class="toc-article-text">部署到github ~和gitcafe</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#使用nginx设置转发"><span class="toc-article-text">使用nginx设置转发</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#补充:使用Webstorm编辑Markdown"><span class="toc-article-text">补充:使用Webstorm编辑Markdown</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#图床"><span class="toc-article-text">图床</span></a></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#为什么要搭建一个独立博客"><span class="toc-article-text">为什么要搭建一个独立博客</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#Hexo"><span class="toc-article-text">Hexo</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#域名设置"><span class="toc-article-text">域名设置</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#DNS设置"><span class="toc-article-text">DNS设置</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#部署到github_~和gitcafe"><span class="toc-article-text">部署到github ~和gitcafe</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#使用nginx设置转发"><span class="toc-article-text">使用nginx设置转发</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#编辑器"><span class="toc-article-text">编辑器</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#图床"><span class="toc-article-text">图床</span></a></li></ol>
 		</div>
 	
 	</div>
