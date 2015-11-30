@@ -4,7 +4,7 @@
   <subtitle><![CDATA[while(true) coding();]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blackshow.me/"/>
-  <updated>2015-11-29T15:01:32.000Z</updated>
+  <updated>2015-11-29T15:04:14.000Z</updated>
   <id>http://blackshow.me/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blackshow.me/2015/11/27/build-blog-with-hexo/"/>
     <id>http://blackshow.me/2015/11/27/build-blog-with-hexo/</id>
     <published>2015-11-27T04:01:31.000Z</published>
-    <updated>2015-11-29T15:01:32.000Z</updated>
+    <updated>2015-11-29T15:04:14.000Z</updated>
     <content type="html"><![CDATA[<p>本文假定你是在Mac OS X上安装并部署Hexo,如果你是windows和linux用户,其实也差不多,自行脑补一下把.</p>
 <h1 id="为什么要搭建一个独立博客">为什么要搭建一个独立博客</h1><p>我是一个重度拖延症患者,作为一个程序猿,我一直有收藏技术文章和记笔记的习惯,但是总是懒于去整理他们,这个问题困扰了我很久.<br>很久以前就有搭建独立博客的想法,但是由于我是一个重度拖延症患者….<br>所以独立博客有什么好处:<br><a id="more"></a></p>
 <ul>
