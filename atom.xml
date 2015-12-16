@@ -4,7 +4,7 @@
   <subtitle><![CDATA[while(true) coding();]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blackshow.me/"/>
-  <updated>2015-11-30T09:47:49.000Z</updated>
+  <updated>2015-12-16T07:00:50.000Z</updated>
   <id>http://blackshow.me/</id>
   
   <author>
@@ -15,11 +15,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[我的书单(持续更新)]]></title>
+    <link href="http://blackshow.me/2015/12/08/my-book-list/"/>
+    <id>http://blackshow.me/2015/12/08/my-book-list/</id>
+    <published>2015-12-08T03:04:31.000Z</published>
+    <updated>2015-12-16T07:00:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="2015">2015</h1><h2 id="2015-12">2015-12</h2><ul>
+<li><a href="https://www.gitbook.com/book/aaaaaashu/mac-dev-setup/details" target="_blank" rel="external">Mac 开发配置手册</a></li>
+</ul>
+<h2 id="2015-12-1">2015-12</h2><ul>
+<li><p><a href="http://www.amazon.cn/gp/product/B015YYTZN4?psc=1&amp;ref_=oh_aui_d_detailpage_o00_" target="_blank" rel="external">年薪20万到80万的进击——高端程序员如何跳槽</a><br>与其说是一本书,其实就是一片文章,是100offer写的,通过数据分析展现人才流向,看完之后对100offer的好感倍生,比拉勾什么的靠谱多了。</p>
+</li>
+<li><p><a href="http://www.amazon.cn/gp/product/B014IIMEEY?psc=1&amp;ref_=oh_aui_d_detailpage_o00_" target="_blank" rel="external">快速阅读训练法(大脑潜能开发书系)</a><br>里面主要讲了快速阅读的训练方法,归结起来就是<code>只看不读(默读也不行)</code>和<code>锻炼眼部肌肉力量,看书的时候以线代点,以面带线</code>,准备试试里面的训练方法,<br>看看是否真的有效。不过看技术性书籍应该是不适合的。</p>
+<a id="more"></a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="2015">2015</h1><h2 id="2015-12">2015-12</h2><ul>
+<li><a href="https://www.gitbook.com/book/aaaaaashu/mac-dev-setup/details">Mac 开发配置手册</a></li>
+</ul>
+<h2 id="2015-12-1">2015-12</h2><ul>
+<li><p><a href="http://www.amazon.cn/gp/product/B015YYTZN4?psc=1&amp;ref_=oh_aui_d_detailpage_o00_">年薪20万到80万的进击——高端程序员如何跳槽</a><br>与其说是一本书,其实就是一片文章,是100offer写的,通过数据分析展现人才流向,看完之后对100offer的好感倍生,比拉勾什么的靠谱多了。</p>
+</li>
+<li><p><a href="http://www.amazon.cn/gp/product/B014IIMEEY?psc=1&amp;ref_=oh_aui_d_detailpage_o00_">快速阅读训练法(大脑潜能开发书系)</a><br>里面主要讲了快速阅读的训练方法,归结起来就是<code>只看不读(默读也不行)</code>和<code>锻炼眼部肌肉力量,看书的时候以线代点,以面带线</code>,准备试试里面的训练方法,<br>看看是否真的有效。不过看技术性书籍应该是不适合的。</p>]]>
+    
+    </summary>
+    
+      <category term="dev" scheme="http://blackshow.me/tags/dev/"/>
+    
+      <category term="life" scheme="http://blackshow.me/tags/life/"/>
+    
+      <category term="Book" scheme="http://blackshow.me/categories/Book/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Hexo使用心得(持续更新)]]></title>
     <link href="http://blackshow.me/2015/11/30/hexo-cheats/"/>
     <id>http://blackshow.me/2015/11/30/hexo-cheats/</id>
     <published>2015-11-30T09:21:31.000Z</published>
-    <updated>2015-11-30T09:47:49.000Z</updated>
+    <updated>2015-12-03T06:35:09.000Z</updated>
     <content type="html"><![CDATA[<p>本文记录一下我使用Hexo的心得.<br>我是使用Webstorm作为Hexo写作的Markdown编辑器,所有Jetbrains旗下的IDE都可以使用.</p>
 <h1 id="命令">命令</h1><p>下面是我配置Hexo命令的alias:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo</span></span><br><span class="line"><span class="built_in">alias</span> hx=<span class="string">"hexo"</span></span><br><span class="line"><span class="comment"># 新建文章</span></span><br><span class="line"><span class="built_in">alias</span> hxn=<span class="string">"hexo n"</span></span><br><span class="line"><span class="comment"># 部署到远程服务器</span></span><br><span class="line"><span class="built_in">alias</span> hxd=<span class="string">"hexo d -g"</span></span><br><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line"><span class="built_in">alias</span> hxg=<span class="string">"hexo g"</span></span><br><span class="line"><span class="comment"># 启动本地预览(预览草稿)</span></span><br><span class="line"><span class="built_in">alias</span> hxs=<span class="string">"hexo server -l --drafts"</span></span><br><span class="line"><span class="comment"># 清除Hexo缓存</span></span><br><span class="line"><span class="built_in">alias</span> hxc=<span class="string">"rm -f ~/blog/db.json &amp;&amp; hexo clean"</span></span><br><span class="line"><span class="comment"># 把草稿发布为post</span></span><br><span class="line"><span class="built_in">alias</span> hxp=<span class="string">"hexo public post "</span></span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -59,7 +94,7 @@
     <link href="http://blackshow.me/2015/11/30/no-login-ssh-with-using-public-key/"/>
     <id>http://blackshow.me/2015/11/30/no-login-ssh-with-using-public-key/</id>
     <published>2015-11-30T05:19:31.000Z</published>
-    <updated>2015-11-30T08:58:33.000Z</updated>
+    <updated>2015-12-16T06:49:10.000Z</updated>
     <content type="html"><![CDATA[<p>每次ssh的时候都要输入密码很烦,密码太简单不安全，密码复杂了输起来很麻烦，下面介绍一下如何配置公钥实现免密码登陆.</p>
 <h1 id="产生及查看公钥">产生及查看公钥</h1><ol>
 <li>打开终端,查看~/.ssh目录下是否有id_rsa.pub文件，如果有可以直接跳过下面第二步,如果没有，请看第二步.<a id="more"></a></li>
@@ -88,7 +123,7 @@
     
     </summary>
     
-      <category term="shell" scheme="http://blackshow.me/tags/shell/"/>
+      <category term="linux" scheme="http://blackshow.me/tags/linux/"/>
     
       <category term="System" scheme="http://blackshow.me/categories/System/"/>
     
@@ -147,7 +182,7 @@
     <link href="http://blackshow.me/2015/11/25/config-my-mac-env/"/>
     <id>http://blackshow.me/2015/11/25/config-my-mac-env/</id>
     <published>2015-11-25T13:17:31.000Z</published>
-    <updated>2015-11-30T08:58:35.000Z</updated>
+    <updated>2015-12-14T05:56:48.000Z</updated>
     <content type="html"><![CDATA[<h1 id="拿到一台新Mac首先要做什么">拿到一台新Mac首先要做什么</h1><p>拿到一台新的Mac，应该先做下面这些事:</p>
 <ul>
 <li>左上角 <code></code> &gt; <code>关于本机</code> &gt; <code>软件更新</code></li>
@@ -159,8 +194,8 @@
 </li>
 <li><p>隐藏菜单栏<br>隐藏了之后由于看不到时间，工作格外专注</p>
 </li>
-<li>安装Homebrew(Mac OS X下最好的包管理工具)<br><a href="http://brew.sh/index.html" target="_blank" rel="external">Homebew的简介和基本操作</a></li>
-<li>安装Homebrew-cast(一个简洁、优雅、迅速的Homebrew扩展)<br><a href="http://caskroom.io" target="_blank" rel="external">Homebew Cask 的简介和基本操作</a></li>
+<li>安装Homebrew(Mac OS X下最好的包管理工具)<br><a href="http://brew.sh/index.html" target="_blank" rel="external">Homebrew的简介和基本操作</a></li>
+<li>安装Homebrew-cast(一个简洁、优雅、迅速的Homebrew扩展)<br><a href="http://caskroom.io" target="_blank" rel="external">Homebrew Cask 的简介和基本操作</a></li>
 <li>安装CleanMyMac<br>如果你和我一样是强迫症的话，请使用CleanMyMac。</li>
 <li>安装Parallel Desktop(如果你和我一样有些不得不用windows的原因)<br>Mac OS X下融合模式最好的虚拟机软件</li>
 </ul>
@@ -179,6 +214,7 @@
 <li>zsh</li>
 <li>tomcat</li>
 <li>nvm</li>
+<li>ssh-copy-id(自动把公钥部署到服务器)</li>
 <li>…<h3 id="by_Homebrew-cask">by Homebrew-cask</h3></li>
 <li>java6</li>
 <li>java7</li>

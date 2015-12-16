@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>使用公钥实现免登陆ssh | blackshow</title>
+  <title>我的书单(持续更新) | blackshow</title>
   <meta name="author" content="blackshow">
   
   <meta name="description" content="This blog is a pixel style blog.It &#39;s about tech,development,life and other things.">
@@ -14,7 +14,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="使用公钥实现免登陆ssh"/>
+  <meta property="og:title" content="我的书单(持续更新)"/>
   <meta property="og:site_name" content="blackshow"/>
 
   
@@ -118,7 +118,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 使用公钥实现免登陆ssh</h1>
+			<h1> 我的书单(持续更新)</h1>
 		</div>
 	
 
@@ -135,26 +135,15 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>每次ssh的时候都要输入密码很烦,密码太简单不安全，密码复杂了输起来很麻烦，下面介绍一下如何配置公钥实现免密码登陆.</p>
-<h1 id="产生及查看公钥">产生及查看公钥</h1><ol>
-<li>打开终端,查看~/.ssh目录下是否有id_rsa.pub文件，如果有可以直接跳过下面第二步,如果没有，请看第二步.<a id="more"></a></li>
-<li>生成RSA密钥<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youname@domain.com"</span></span><br></pre></td></tr></table></figure>
+	  <h1 id="2015">2015</h1><h2 id="2015-12">2015-12</h2><ul>
+<li><a href="https://www.gitbook.com/book/aaaaaashu/mac-dev-setup/details" target="_blank" rel="external">Mac 开发配置手册</a></li>
+</ul>
+<h2 id="2015-12-1">2015-12</h2><ul>
+<li><p><a href="http://www.amazon.cn/gp/product/B015YYTZN4?psc=1&amp;ref_=oh_aui_d_detailpage_o00_" target="_blank" rel="external">年薪20万到80万的进击——高端程序员如何跳槽</a><br>与其说是一本书,其实就是一片文章,是100offer写的,通过数据分析展现人才流向,看完之后对100offer的好感倍生,比拉勾什么的靠谱多了。</p>
 </li>
-</ol>
-<h1 id="把公钥添加到服务器信任列表">把公钥添加到服务器信任列表</h1><ol>
-<li>打开id_rsa.pub文件，拷贝除『yourname@domain.com』之外的部分，也就是”ssh -rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQ…”.</li>
-<li>ssh登录你的服务器,进入~/.ssh目录,建立authorized_keys文件，添加刚才拷贝的内容,保存并退出.<br>至此，免密码ssh配置完成.</li>
-</ol>
-<h1 id="用途">用途</h1><p>目前我的用途是:</p>
-<ol>
-<li>开机自动建立sock5代理:<br> 新建一个脚本，我取名为<code>vps.login</code>,里面内容如下: <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span> ssh -D <span class="number">7070</span> root@my-vps-domain || <span class="literal">true</span>; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>然后加到开启启动中,这样我就可以生活在墙外了.</p>
-<ol>
-<li>持续集成定时更新:<br> 由于现在ssh登录不需要密码,那么scp命令也不用输入密码了,可以利用scp命令把持续集成服务器打好的包定时传送到测试服务器,并用ssh命令重启测试服务器的服务.实现自动化持续集成. <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># scp 命令传递文件</span></span><br><span class="line">scp -r ./some files root@my-vps-domain:/path</span><br><span class="line"><span class="comment"># ssh 远程执行命令</span></span><br><span class="line">ssh root@my-vps-domain <span class="string">"shell scripts"</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<li><p><a href="http://www.amazon.cn/gp/product/B014IIMEEY?psc=1&amp;ref_=oh_aui_d_detailpage_o00_" target="_blank" rel="external">快速阅读训练法(大脑潜能开发书系)</a><br>里面主要讲了快速阅读的训练方法,归结起来就是<code>只看不读(默读也不行)</code>和<code>锻炼眼部肌肉力量,看书的时候以线代点,以面带线</code>,准备试试里面的训练方法,<br>看看是否真的有效。不过看技术性书籍应该是不适合的。</p>
+<a id="more"></a></li>
+</ul>
 	  
 	</div>
 
@@ -164,13 +153,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/2015/11/30/hexo-cheats/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2015/11/27/build-blog-with-hexo/" type="button" class="btn btn-default ">Next<i
+    <a href="/2015/11/30/hexo-cheats/" type="button" class="btn btn-default ">Next<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -224,7 +212,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	Nov 30 2015 
+	Dec 8 2015 
 	</div>
 	
 
@@ -235,7 +223,7 @@ var _hmt = _hmt || [];
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/System/">System<span>2</span></a></li>
+    <li><a href="/categories/Book/">Book<span>1</span></a></li>
   </li>
 
     </ul>
@@ -248,13 +236,19 @@ var _hmt = _hmt || [];
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/linux/">linux<span>1</span></a></li>
+  <li><a href="/tags/dev/">dev<span>1</span></a></li> <li><a href="/tags/life/">life<span>1</span></a></li>
     </ul>
 	</div>
 		
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">Contents</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#2015"><span class="toc-article-text">2015</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#2015-12"><span class="toc-article-text">2015-12</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#2015-12-1"><span class="toc-article-text">2015-12</span></a></li></ol></li></ol>
+		</div>
 	
 	</div>
 	
