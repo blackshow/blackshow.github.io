@@ -4,7 +4,7 @@
   <subtitle><![CDATA[while(true) coding();]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blackshow.me/"/>
-  <updated>2015-12-16T07:00:50.000Z</updated>
+  <updated>2015-12-16T08:43:40.000Z</updated>
   <id>http://blackshow.me/</id>
   
   <author>
@@ -13,6 +13,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[理解Linux用户和用户组]]></title>
+    <link href="http://blackshow.me/2015/12/16/understand-linux-users-and-groups/"/>
+    <id>http://blackshow.me/2015/12/16/understand-linux-users-and-groups/</id>
+    <published>2015-12-16T06:46:31.000Z</published>
+    <updated>2015-12-16T08:43:40.000Z</updated>
+    <content type="html"><![CDATA[<p>之前总是用root用户,觉得不正规也不安全,看了几篇linux用户和用户组介绍的帖子,总结了个MindMap。<br><img src="http://7xofqj.com1.z0.glb.clouddn.com/linux-users-and-groups.png" alt="用户和用户组"><br><a href="https://www.processon.com/view/link/567122bfe4b02f55903bbcb8" target="_blank" rel="external">MindMap的源文件</a>,欢迎修改.<br><a id="more"></a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>之前总是用root用户,觉得不正规也不安全,看了几篇linux用户和用户组介绍的帖子,总结了个MindMap。<br><img src="http://7xofqj.com1.z0.glb.clouddn.com/linux-users-and-groups.png" alt="用户和用户组"><br><a href="https://www.processon.com/view/link/567122bfe4b02f55903bbcb8">MindMap的源文件</a>,欢迎修改.<br>]]>
+    
+    </summary>
+    
+      <category term="linux" scheme="http://blackshow.me/tags/linux/"/>
+    
+      <category term="System" scheme="http://blackshow.me/categories/System/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[我的书单(持续更新)]]></title>
