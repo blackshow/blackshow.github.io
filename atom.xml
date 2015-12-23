@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[blackshow]]></title>
-  <subtitle><![CDATA[Ever youngful,ever weeping]]></subtitle>
+  <subtitle><![CDATA[Ever youthful,ever weeping]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blackshow.me/"/>
   <updated>2015-12-16T08:43:40.000Z</updated>
@@ -38,25 +38,29 @@
     <link href="http://blackshow.me/2015/12/08/my-book-list/"/>
     <id>http://blackshow.me/2015/12/08/my-book-list/</id>
     <published>2015-12-08T03:04:31.000Z</published>
-    <updated>2015-12-16T07:00:50.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="2015">2015</h1><h2 id="2015-12">2015-12</h2><ul>
+    <updated>2015-12-23T02:23:48.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="2015">2015</h1><h2 id="2015-11">2015-11</h2><ul>
 <li><a href="https://www.gitbook.com/book/aaaaaashu/mac-dev-setup/details" target="_blank" rel="external">Mac 开发配置手册</a></li>
 </ul>
-<h2 id="2015-12-1">2015-12</h2><ul>
+<h2 id="2015-12">2015-12</h2><ul>
 <li><p><a href="http://www.amazon.cn/gp/product/B015YYTZN4?psc=1&amp;ref_=oh_aui_d_detailpage_o00_" target="_blank" rel="external">年薪20万到80万的进击——高端程序员如何跳槽</a><br>与其说是一本书,其实就是一片文章,是100offer写的,通过数据分析展现人才流向,看完之后对100offer的好感倍生,比拉勾什么的靠谱多了。</p>
 </li>
 <li><p><a href="http://www.amazon.cn/gp/product/B014IIMEEY?psc=1&amp;ref_=oh_aui_d_detailpage_o00_" target="_blank" rel="external">快速阅读训练法(大脑潜能开发书系)</a><br>里面主要讲了快速阅读的训练方法,归结起来就是<code>只看不读(默读也不行)</code>和<code>锻炼眼部肌肉力量,看书的时候以线代点,以面带线</code>,准备试试里面的训练方法,<br>看看是否真的有效。不过看技术性书籍应该是不适合的。</p>
+</li>
+<li><p><a href="https://yeasy.gitbooks.io/docker_practice/content/" target="_blank" rel="external">Docker–从入门到实践</a><br>通读了此书，对Docker有了初步的了解，掌握了docker的基本操作，但是集群方式还没有试，以后有时间试试。此书十分推荐，无论是开发还是运维，都应该了解并使用docker。<br>因为docker太cool，和git一样cool。</p>
 <a id="more"></a></li>
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="2015">2015</h1><h2 id="2015-12">2015-12</h2><ul>
+    <![CDATA[<h1 id="2015">2015</h1><h2 id="2015-11">2015-11</h2><ul>
 <li><a href="https://www.gitbook.com/book/aaaaaashu/mac-dev-setup/details">Mac 开发配置手册</a></li>
 </ul>
-<h2 id="2015-12-1">2015-12</h2><ul>
+<h2 id="2015-12">2015-12</h2><ul>
 <li><p><a href="http://www.amazon.cn/gp/product/B015YYTZN4?psc=1&amp;ref_=oh_aui_d_detailpage_o00_">年薪20万到80万的进击——高端程序员如何跳槽</a><br>与其说是一本书,其实就是一片文章,是100offer写的,通过数据分析展现人才流向,看完之后对100offer的好感倍生,比拉勾什么的靠谱多了。</p>
 </li>
-<li><p><a href="http://www.amazon.cn/gp/product/B014IIMEEY?psc=1&amp;ref_=oh_aui_d_detailpage_o00_">快速阅读训练法(大脑潜能开发书系)</a><br>里面主要讲了快速阅读的训练方法,归结起来就是<code>只看不读(默读也不行)</code>和<code>锻炼眼部肌肉力量,看书的时候以线代点,以面带线</code>,准备试试里面的训练方法,<br>看看是否真的有效。不过看技术性书籍应该是不适合的。</p>]]>
+<li><p><a href="http://www.amazon.cn/gp/product/B014IIMEEY?psc=1&amp;ref_=oh_aui_d_detailpage_o00_">快速阅读训练法(大脑潜能开发书系)</a><br>里面主要讲了快速阅读的训练方法,归结起来就是<code>只看不读(默读也不行)</code>和<code>锻炼眼部肌肉力量,看书的时候以线代点,以面带线</code>,准备试试里面的训练方法,<br>看看是否真的有效。不过看技术性书籍应该是不适合的。</p>
+</li>
+<li><p><a href="https://yeasy.gitbooks.io/docker_practice/content/">Docker–从入门到实践</a><br>通读了此书，对Docker有了初步的了解，掌握了docker的基本操作，但是集群方式还没有试，以后有时间试试。此书十分推荐，无论是开发还是运维，都应该了解并使用docker。<br>因为docker太cool，和git一样cool。</p>]]>
     
     </summary>
     
