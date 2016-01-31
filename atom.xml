@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Ever youthful,ever weeping]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blackshow.me/"/>
-  <updated>2015-12-16T08:43:40.000Z</updated>
+  <updated>2016-01-31T13:03:14.000Z</updated>
   <id>http://blackshow.me/</id>
   
   <author>
@@ -13,6 +13,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[『You can't specify target table 't1' for update in FROM clause』 bug 解决]]></title>
+    <link href="http://blackshow.me/2016/01/31/derived-merge-bug-on-mysql5.7/"/>
+    <id>http://blackshow.me/2016/01/31/derived-merge-bug-on-mysql5.7/</id>
+    <published>2016-01-31T12:53:31.000Z</published>
+    <updated>2016-01-31T13:03:14.000Z</updated>
+    <content type="html"><![CDATA[<p>前几天升级了Mysql 5.7,昨天在测试一个很久没改动的系统时一条Sql报了这个bug『You can’t specify target table ‘t1’ for update in FROM clause』。<br>用排除法分析了一下,发现只有在Mysql 5.7上才能重现,遂上网查找了一下Mysql 5.7的Release note,发现确实是Mysql在这方面进行了更改。原文如下:<br>As of MySQL 5.7.6, the optimizer handles propagation of an ORDER BY clause in a derived table or view reference to the outer query block by propagating the ORDER BY clause if the following conditions apply: The outer query is not grouped or aggregated; does not specify DISTINCT, HAVING, or ORDER BY; and has this derived table or view reference as the only source in the FROM clause. Otherwise, the optimizer ignores the ORDER BY clause. Before MySQL 5.7.6, the optimizer always propagated ORDER BY, even if it was irrelevant or resulted in an invalid query.</p>
+<blockquote>
+<p>For statements such as DELETE or UPDATE that modify tables, using the merge strategy for a derived table that prior to MySQL 5.7.6 was materialized can result in an ER_UPDATE_TABLE_USED error:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DELETE FROM t1</span><br><span class="line">    -&gt; WHERE id IN (SELECT id</span><br><span class="line">    -&gt;              FROM (SELECT t1.id</span><br><span class="line">    -&gt;                    FROM t1 INNER JOIN t2 USING (id)</span><br><span class="line">    -&gt;                    WHERE t2.status = <span class="number">0</span>) AS t);</span><br><span class="line">ERROR <span class="number">1093</span> (HY000): You can<span class="string">'t specify target table '</span>t1<span class="string">'</span><br><span class="line">for update in FROM clause</span></span><br></pre></td></tr></table></figure></p>
+<p>The error occurs when merging a derived table into the outer query block results in a statement that both selects from and modifies a table. (Materialization does not cause the problem because, in effect, it converts the derived table to a separate table.) To avoid this error, disable the derived_merge flag of the optimizer_switch system variable before executing the statement:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET optimizer_switch = <span class="string">'derived_merge=off'</span>;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<a id="more"></a>
+<p>Mysql 在5.7版本之后,默认的derived_merge是<code>on</code>,导致在更新和删除表的时候Where条件中不能出现要更新或者删除的表。解决这个问题有三种方式:<br>1.在my.cnf里配置<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optimizer_switch = <span class="string">'derived_merge=off'</span></span><br></pre></td></tr></table></figure></p>
+<p>2.修改sql语句为:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SET optimizer_switch = <span class="string">'derived_merge=off'</span>;</span><br><span class="line">DELETE FROM t1</span><br><span class="line">WHERE id IN (SELECT id</span><br><span class="line">              FROM (SELECT t1.id</span><br><span class="line">                    FROM t1 INNER JOIN t2 USING (id)</span><br><span class="line">                    WHERE t2.status = <span class="number">0</span>) AS t);</span><br></pre></td></tr></table></figure></p>
+<p>3.修改程序,把ID先查出来,我比较喜欢这种方式。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>前几天升级了Mysql 5.7,昨天在测试一个很久没改动的系统时一条Sql报了这个bug『You can’t specify target table ‘t1’ for update in FROM clause』。<br>用排除法分析了一下,发现只有在Mysql 5.7上才能重现,遂上网查找了一下Mysql 5.7的Release note,发现确实是Mysql在这方面进行了更改。原文如下:<br>As of MySQL 5.7.6, the optimizer handles propagation of an ORDER BY clause in a derived table or view reference to the outer query block by propagating the ORDER BY clause if the following conditions apply: The outer query is not grouped or aggregated; does not specify DISTINCT, HAVING, or ORDER BY; and has this derived table or view reference as the only source in the FROM clause. Otherwise, the optimizer ignores the ORDER BY clause. Before MySQL 5.7.6, the optimizer always propagated ORDER BY, even if it was irrelevant or resulted in an invalid query.</p>
+<blockquote>
+<p>For statements such as DELETE or UPDATE that modify tables, using the merge strategy for a derived table that prior to MySQL 5.7.6 was materialized can result in an ER_UPDATE_TABLE_USED error:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DELETE FROM t1</span><br><span class="line">    -&gt; WHERE id IN (SELECT id</span><br><span class="line">    -&gt;              FROM (SELECT t1.id</span><br><span class="line">    -&gt;                    FROM t1 INNER JOIN t2 USING (id)</span><br><span class="line">    -&gt;                    WHERE t2.status = <span class="number">0</span>) AS t);</span><br><span class="line">ERROR <span class="number">1093</span> (HY000): You can<span class="string">'t specify target table '</span>t1<span class="string">'</span><br><span class="line">for update in FROM clause</span></span><br></pre></td></tr></table></figure></p>
+<p>The error occurs when merging a derived table into the outer query block results in a statement that both selects from and modifies a table. (Materialization does not cause the problem because, in effect, it converts the derived table to a separate table.) To avoid this error, disable the derived_merge flag of the optimizer_switch system variable before executing the statement:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET optimizer_switch = <span class="string">'derived_merge=off'</span>;</span><br></pre></td></tr></table></figure></p>
+</blockquote>]]>
+    
+    </summary>
+    
+      <category term="mysql" scheme="http://blackshow.me/tags/mysql/"/>
+    
+      <category term="Database" scheme="http://blackshow.me/categories/Database/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[理解Linux用户和用户组]]></title>
@@ -38,30 +69,35 @@
     <link href="http://blackshow.me/2015/12/08/my-book-list/"/>
     <id>http://blackshow.me/2015/12/08/my-book-list/</id>
     <published>2015-12-08T03:04:31.000Z</published>
-    <updated>2015-12-29T03:40:04.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="2015">2015</h1><h2 id="2015-11">2015-11</h2><ul>
-<li><a href="https://www.gitbook.com/book/aaaaaashu/mac-dev-setup/details" target="_blank" rel="external">Mac 开发配置手册</a></li>
+    <updated>2016-01-31T12:52:57.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="2016">2016</h1><h2 id="2016-1">2016-1</h2><ul>
+<li><a href="http://www.duokan.com/book/95055" target="_blank" rel="external">1984</a><br>第一次知道这本书是因为被封很多年的那个1984bbs,读完了之后感觉毛骨悚然,第一次感受到文字的力量如此强大。<br>本书描述了一个极度集权的病态社会,和天朝差不多,度过了以后有种设身处地的感觉。</li>
 </ul>
-<h2 id="2015-12">2015-12</h2><ul>
+<h1 id="2015">2015</h1><h2 id="2015-12">2015-12</h2><ul>
 <li><p><a href="http://www.amazon.cn/gp/product/B015YYTZN4?psc=1&amp;ref_=oh_aui_d_detailpage_o00_" target="_blank" rel="external">年薪20万到80万的进击——高端程序员如何跳槽</a><br>与其说是一本书,其实就是一片文章,是100offer写的,通过数据分析展现人才流向,看完之后对100offer的好感倍生,比拉勾什么的靠谱多了。</p>
 </li>
 <li><p><a href="http://www.amazon.cn/gp/product/B014IIMEEY?psc=1&amp;ref_=oh_aui_d_detailpage_o00_" target="_blank" rel="external">快速阅读训练法(大脑潜能开发书系)</a><br>里面主要讲了快速阅读的训练方法,归结起来就是<code>只看不读(默读也不行)</code>和<code>锻炼眼部肌肉力量,看书的时候以线代点,以面带线</code>,准备试试里面的训练方法,<br>看看是否真的有效。不过看技术性书籍应该是不适合的。</p>
 </li>
 <li><p><a href="https://yeasy.gitbooks.io/docker_practice/content/" target="_blank" rel="external">Docker–从入门到实践</a><br>通读了此书,对Docker有了初步的了解,掌握了docker的基本操作,但是集群方式还没有试,以后有时间试试。此书十分推荐,无论是开发还是运维,都应该了解并使用docker。<br>因为docker太cool,和git一样cool。</p>
-<a id="more"></a></li>
-<li><a href="http://www.duokan.com/book/95055" target="_blank" rel="external">1984</a><br>第一次知道这本书是因为被封很多年的那个1984bbs,还没读完</li>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="2015-11">2015-11</h2><ul>
+<li><a href="https://www.gitbook.com/book/aaaaaashu/mac-dev-setup/details" target="_blank" rel="external">Mac 开发配置手册</a></li>
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="2015">2015</h1><h2 id="2015-11">2015-11</h2><ul>
-<li><a href="https://www.gitbook.com/book/aaaaaashu/mac-dev-setup/details">Mac 开发配置手册</a></li>
+    <![CDATA[<h1 id="2016">2016</h1><h2 id="2016-1">2016-1</h2><ul>
+<li><a href="http://www.duokan.com/book/95055">1984</a><br>第一次知道这本书是因为被封很多年的那个1984bbs,读完了之后感觉毛骨悚然,第一次感受到文字的力量如此强大。<br>本书描述了一个极度集权的病态社会,和天朝差不多,度过了以后有种设身处地的感觉。</li>
 </ul>
-<h2 id="2015-12">2015-12</h2><ul>
+<h1 id="2015">2015</h1><h2 id="2015-12">2015-12</h2><ul>
 <li><p><a href="http://www.amazon.cn/gp/product/B015YYTZN4?psc=1&amp;ref_=oh_aui_d_detailpage_o00_">年薪20万到80万的进击——高端程序员如何跳槽</a><br>与其说是一本书,其实就是一片文章,是100offer写的,通过数据分析展现人才流向,看完之后对100offer的好感倍生,比拉勾什么的靠谱多了。</p>
 </li>
 <li><p><a href="http://www.amazon.cn/gp/product/B014IIMEEY?psc=1&amp;ref_=oh_aui_d_detailpage_o00_">快速阅读训练法(大脑潜能开发书系)</a><br>里面主要讲了快速阅读的训练方法,归结起来就是<code>只看不读(默读也不行)</code>和<code>锻炼眼部肌肉力量,看书的时候以线代点,以面带线</code>,准备试试里面的训练方法,<br>看看是否真的有效。不过看技术性书籍应该是不适合的。</p>
 </li>
-<li><p><a href="https://yeasy.gitbooks.io/docker_practice/content/">Docker–从入门到实践</a><br>通读了此书,对Docker有了初步的了解,掌握了docker的基本操作,但是集群方式还没有试,以后有时间试试。此书十分推荐,无论是开发还是运维,都应该了解并使用docker。<br>因为docker太cool,和git一样cool。</p>]]>
+<li><p><a href="https://yeasy.gitbooks.io/docker_practice/content/">Docker–从入门到实践</a><br>通读了此书,对Docker有了初步的了解,掌握了docker的基本操作,但是集群方式还没有试,以后有时间试试。此书十分推荐,无论是开发还是运维,都应该了解并使用docker。<br>因为docker太cool,和git一样cool。</p>
+</li>
+</ul>]]>
     
     </summary>
     

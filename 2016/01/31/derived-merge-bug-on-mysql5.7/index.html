@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>理解Linux用户和用户组 | blackshow</title>
+  <title>『You can&#39;t specify target table &#39;t1&#39; for update in FROM clause』 bug 解决 | blackshow</title>
   <meta name="author" content="blackshow">
   
   <meta name="description" content="This blog is a pixel style blog.It &#39;s about tech,development,life and other things.">
@@ -14,7 +14,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="理解Linux用户和用户组"/>
+  <meta property="og:title" content="『You can&#39;t specify target table &#39;t1&#39; for update in FROM clause』 bug 解决"/>
   <meta property="og:site_name" content="blackshow"/>
 
   
@@ -118,7 +118,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 理解Linux用户和用户组</h1>
+			<h1> 『You can&#39;t specify target table &#39;t1&#39; for update in FROM clause』 bug 解决</h1>
 		</div>
 	
 
@@ -135,7 +135,15 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>之前总是用root用户,觉得不正规也不安全,看了几篇linux用户和用户组介绍的帖子,总结了个MindMap。<br><img src="http://7xofqj.com1.z0.glb.clouddn.com/linux-users-and-groups.png" alt="用户和用户组"><br><a href="https://www.processon.com/view/link/567122bfe4b02f55903bbcb8" target="_blank" rel="external">MindMap的源文件</a>,欢迎修改.<br><a id="more"></a></p>
+	  <p>前几天升级了Mysql 5.7,昨天在测试一个很久没改动的系统时一条Sql报了这个bug『You can’t specify target table ‘t1’ for update in FROM clause』。<br>用排除法分析了一下,发现只有在Mysql 5.7上才能重现,遂上网查找了一下Mysql 5.7的Release note,发现确实是Mysql在这方面进行了更改。原文如下:<br>As of MySQL 5.7.6, the optimizer handles propagation of an ORDER BY clause in a derived table or view reference to the outer query block by propagating the ORDER BY clause if the following conditions apply: The outer query is not grouped or aggregated; does not specify DISTINCT, HAVING, or ORDER BY; and has this derived table or view reference as the only source in the FROM clause. Otherwise, the optimizer ignores the ORDER BY clause. Before MySQL 5.7.6, the optimizer always propagated ORDER BY, even if it was irrelevant or resulted in an invalid query.</p>
+<blockquote>
+<p>For statements such as DELETE or UPDATE that modify tables, using the merge strategy for a derived table that prior to MySQL 5.7.6 was materialized can result in an ER_UPDATE_TABLE_USED error:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DELETE FROM t1</span><br><span class="line">    -&gt; WHERE id IN (SELECT id</span><br><span class="line">    -&gt;              FROM (SELECT t1.id</span><br><span class="line">    -&gt;                    FROM t1 INNER JOIN t2 USING (id)</span><br><span class="line">    -&gt;                    WHERE t2.status = <span class="number">0</span>) AS t);</span><br><span class="line">ERROR <span class="number">1093</span> (HY000): You can<span class="string">'t specify target table '</span>t1<span class="string">'</span><br><span class="line">for update in FROM clause</span></span><br></pre></td></tr></table></figure></p>
+<p>The error occurs when merging a derived table into the outer query block results in a statement that both selects from and modifies a table. (Materialization does not cause the problem because, in effect, it converts the derived table to a separate table.) To avoid this error, disable the derived_merge flag of the optimizer_switch system variable before executing the statement:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET optimizer_switch = <span class="string">'derived_merge=off'</span>;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<a id="more"></a>
+<p>Mysql 在5.7版本之后,默认的derived_merge是<code>on</code>,导致在更新和删除表的时候Where条件中不能出现要更新或者删除的表。解决这个问题有三种方式:<br>1.在my.cnf里配置<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optimizer_switch = <span class="string">'derived_merge=off'</span></span><br></pre></td></tr></table></figure></p>
+<p>2.修改sql语句为:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SET optimizer_switch = <span class="string">'derived_merge=off'</span>;</span><br><span class="line">DELETE FROM t1</span><br><span class="line">WHERE id IN (SELECT id</span><br><span class="line">              FROM (SELECT t1.id</span><br><span class="line">                    FROM t1 INNER JOIN t2 USING (id)</span><br><span class="line">                    WHERE t2.status = <span class="number">0</span>) AS t);</span><br></pre></td></tr></table></figure></p>
+<p>3.修改程序,把ID先查出来,我比较喜欢这种方式。</p>
 	  
 	</div>
 
@@ -145,13 +153,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/2016/01/31/derived-merge-bug-on-mysql5.7/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2015/12/08/my-book-list/" type="button" class="btn btn-default ">Next<i
+    <a href="/2015/12/16/understand-linux-users-and-groups/" type="button" class="btn btn-default ">Next<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -205,7 +212,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	Dec 16 2015 
+	Jan 31 2016 
 	</div>
 	
 
@@ -216,7 +223,7 @@ var _hmt = _hmt || [];
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/System/">System<span>3</span></a></li>
+    <li><a href="/categories/Database/">Database<span>1</span></a></li>
   </li>
 
     </ul>
@@ -229,7 +236,7 @@ var _hmt = _hmt || [];
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/linux/">linux<span>2</span></a></li>
+  <li><a href="/tags/mysql/">mysql<span>1</span></a></li>
     </ul>
 	</div>
 		
