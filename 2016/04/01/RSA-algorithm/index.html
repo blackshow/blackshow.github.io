@@ -6,15 +6,15 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>resume | blackshow</title>
+  <title>RSA非对称公钥加密算法原理 | blackshow</title>
   <meta name="author" content="blackshow">
   
-  <meta name="description" content="This blog is a pixel style blog.It &#39;s about tech,development,life and other things.">
+  <meta name="description" content="RSA算法是最重要的非对称加密算法之一.转自阮一峰老师的博客.">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="RSA非对称公钥加密算法原理"/>
   <meta property="og:site_name" content="blackshow"/>
 
   
@@ -115,163 +115,153 @@ var _hmt = _hmt || [];
   	<div class="content">
     	 
 
-<!-- title -->
-<div class="page-header">
-  <h1 class="archive-title-tag"><i class="fa fa-archive"></i> resume</h1>
-</div>
 
-<div class="row page">
-  <!-- cols -->
-  
-  <div class="col-md-9">
 	
-
-	  <div id="top_search"></div>
-
-	  <div class="archive">
-		
-		
-		
-			
-			
-			<h4 class="archive-ul" data-toggle="collapse" data-target="#2016">2016<b class="caret"></b></h4>
-			<ul id="2016" class="collapse in">
-			
-		
-		<li class="listing-item">
-		<span class="date_class"> 2016-05-25 </span> &raquo;
-		
-		   <span class="title"><a href="/2016/05/25/resume/" >Java programer</a></span>
-		
-		</li>			
-		
-		</ul>
+		<div class="page-header">
+			<h1> RSA非对称公钥加密算法原理</h1>
 		</div>
-
-</div> <!-- col-md-9/col-md-12 -->
-
-
-<div class="col-md-3">
-	<div id="sidebar">
 	
-			
-  <div id="site_search">
-   <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
-   </div>  
-  <div id="local-search-result"></div>
-  </div>
 
 
-		
-			
-	<div class="widget">
-		<h4>Categories</h4>
-		<ul class="tag_box inline list-unstyled">
-		
-			<li><a href="/categories/Android/">Android<span>0</span></a></li>
-		
-			<li><a href="/categories/Book/">Book<span>1</span></a></li>
-		
-			<li><a href="/categories/Database/">Database<span>1</span></a></li>
-		
-			<li><a href="/categories/Front/">Front<span>3</span></a></li>
-		
-			<li><a href="/categories/System/">System<span>3</span></a></li>
-		
-			<li><a href="/categories/dev/">dev<span>2</span></a></li>
-		
-			<li><a href="/categories/other/">other<span>1</span></a></li>
-		
-		</ul>
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> RSA算法是最重要的非对称加密算法之一.转自阮一峰老师的博客.
+		 </div> <!-- alert -->
+	  		
+
+	  <p>涉及到的数学知识:<a href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html</a><br>算法具体实现:<a href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html</a></p>
+	  
 	</div>
 
-		
-			
-	<div class="widget">
-		<h4>Tag Cloud</h4>
-		<ul class="tag_box inline list-unstyled">		
-		
-			<li><a href="/tags/tools/">tools<span>1</span></a></li>
-		
-			<li><a href="/tags/hexo/">hexo<span>3</span></a></li>
-		
-			<li><a href="/tags/life/">life<span>1</span></a></li>
-		
-			<li><a href="/tags/Mac/">Mac<span>1</span></a></li>
-		
-			<li><a href="/tags/linux/">linux<span>2</span></a></li>
-		
-			<li><a href="/tags/mysql/">mysql<span>1</span></a></li>
-		
-			<li><a href="/tags/github/">github<span>1</span></a></li>
-		
-			<li><a href="/tags/PKI/">PKI<span>2</span></a></li>
-		
-			<li><a href="/tags/mobile/">mobile<span>0</span></a></li>
-		
-			<li><a href="/tags/resume/">resume<span>1</span></a></li>
-		
-			<li><a href="/tags/dev/">dev<span>1</span></a></li>
-		
-			<li><a href="/tags/java/">java<span>0</span></a></li>
-		
-		 
-		</ul>
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2016/05/25/resume/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2016/01/31/derived-merge-bug-on-mysql5.7/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
 	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+    <div id="disqus_thread" class="ds-thread">
+        <script type="text/javascript">
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//blackshow.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    
+</section>
 
 
+	</div> <!-- col-md-9/col-md-12 -->
 		
-			
-<div class="widget">
-  <h4>Recent Posts</h4>
-  <ul class="entry list-unstyled">
-    
-      <li>
-        <a href="/2016/05/29/https-flow/" ><i class="fa fa-file-o"></i>手绘https流程...</a>
-      </li>
-    
-      <li>
-        <a href="/2016/05/25/resume/" ><i class="fa fa-file-o"></i>Java programer...</a>
-      </li>
-    
-      <li>
-        <a href="/2016/04/01/RSA-algorithm/"  title="RSA算法是最重要的非对称加密算法之一.转自阮一峰老师的博客." ><i class="fa fa-file-o"></i>RSA非对称公钥加密算法原理...</a>
-      </li>
-    
-      <li>
-        <a href="/2016/01/31/derived-merge-bug-on-mysql5.7/" ><i class="fa fa-file-o"></i>『You can&#39;t specify target t...</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/16/understand-linux-users-and-groups/" ><i class="fa fa-file-o"></i>理解Linux用户和用户组...</a>
-      </li>
-    
-  </ul>
-</div>
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
 
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	Apr 1 2016 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/dev/">dev<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/PKI/">PKI<span>2</span></a></li>
+    </ul>
+	</div>
 		
-			
-<div class="widget">
-	<h4>Links</h4>
-	<ul class="blogroll list-unstyled">
-	
-		<li><i class="fa fa-github"></i><a href="https://github.com/wzpan/hexo-theme-freemind" title="Freemind's Github repository." target="_blank"]);">Freemind</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="https://github.com/kristopolous/BOOTSTRA.386" title="BOOTSTRA.386's Github repository." target="_blank"]);">BOOTSTRA.386</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="https://github.com/blackshow/hexo-theme-freemind.386" title="Freemind.386's Github repository." target="_blank"]);">Freemind.386</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="http://www.github.com/blackshow" title="My Github account." target="_blank"]);">My Github</a></li>
-	
-	</ul>
-</div>
 
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
 
+	</div>
 		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
 
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'blackshow';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
 
 
 
