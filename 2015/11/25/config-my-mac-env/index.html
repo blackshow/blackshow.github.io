@@ -139,14 +139,14 @@ var _hmt = _hmt || [];
 		 </div> <!-- alert -->
 	  		
 
-	  <h1 id="拿到一台新Mac首先要做什么">拿到一台新Mac首先要做什么</h1><p>拿到一台新的Mac，应该先做下面这些事:</p>
+	  <h1 id="拿到一台新Mac首先要做什么"><a href="#拿到一台新Mac首先要做什么" class="headerlink" title="拿到一台新Mac首先要做什么"></a>拿到一台新Mac首先要做什么</h1><p>拿到一台新的Mac，应该先做下面这些事:</p>
 <ul>
 <li>左上角 <code></code> &gt; <code>关于本机</code> &gt; <code>软件更新</code></li>
 <li>安装<a href="http://www.iterm2.com/downloads.html" target="_blank" rel="external">iTerm 2</a>(Mac下最好的终端替代软件)</li>
 <li>配置<a href="http://jingyan.baidu.com/article/e73e26c0a8717424adb6a7c4.html" target="_blank" rel="external">右键直接在finder中打开当前路径的终端</a></li>
 <li><p>隐藏Dock<br>可以获得更大的工作空间，这里要把Dock唤出的延迟去掉</p>
 <a id="more"></a>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#去除延迟</span></span><br><span class="line">$ defaults write com.apple.Dock autohide-delay -float <span class="number">0</span> &amp;&amp; killall Dock</span><br><span class="line"></span><br><span class="line"><span class="comment">#恢复延迟</span></span><br><span class="line">$ defaults delete com.apple.Dock autohide-delay &amp;&amp; killall Dock</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#去除延迟</span></div><div class="line">$ defaults write com.apple.Dock autohide-delay -float 0 &amp;&amp; killall Dock</div><div class="line"></div><div class="line"><span class="comment">#恢复延迟</span></div><div class="line">$ defaults delete com.apple.Dock autohide-delay &amp;&amp; killall Dock</div></pre></td></tr></table></figure>
 </li>
 <li><p>隐藏菜单栏<br>隐藏了之后由于看不到时间，工作格外专注</p>
 </li>
@@ -156,11 +156,11 @@ var _hmt = _hmt || [];
 <li>安装Parallel Desktop(如果你和我一样有些不得不用windows的原因)<br>Mac OS X下融合模式最好的虚拟机软件</li>
 </ul>
 <p>做完这些，基本上环境搭建已经成功了一大半了。</p>
-<h1 id="开始安装软件">开始安装软件</h1><p>安装软件的原则是：</p>
+<h1 id="开始安装软件"><a href="#开始安装软件" class="headerlink" title="开始安装软件"></a>开始安装软件</h1><p>安装软件的原则是：</p>
 <blockquote>
 <p>能通过Homebrew安装的就用Homebrew和Homebrew Cast安装。</p>
 </blockquote>
-<h2 id="开发工具">开发工具</h2><h3 id="by_Homebrew">by Homebrew</h3><ul>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="by-Homebrew"><a href="#by-Homebrew" class="headerlink" title="by Homebrew"></a>by Homebrew</h3><ul>
 <li>git</li>
 <li>git-flow</li>
 <li>maven</li>
@@ -171,12 +171,12 @@ var _hmt = _hmt || [];
 <li>tomcat</li>
 <li>nvm</li>
 <li>ssh-copy-id(自动把公钥部署到服务器)</li>
-<li>…<h3 id="by_Homebrew-cask">by Homebrew-cask</h3></li>
+<li>…<h3 id="by-Homebrew-cask"><a href="#by-Homebrew-cask" class="headerlink" title="by Homebrew-cask"></a>by Homebrew-cask</h3></li>
 <li>java6</li>
 <li>java7</li>
 <li>java(java8)</li>
 </ul>
-<h3 id="普通安装">普通安装</h3><ul>
+<h3 id="普通安装"><a href="#普通安装" class="headerlink" title="普通安装"></a>普通安装</h3><ul>
 <li>IDEA Intellij</li>
 <li>WebStorm</li>
 <li>Android Studio</li>
@@ -186,7 +186,7 @@ var _hmt = _hmt || [];
 <li>Sublime text 3</li>
 <li>Remote Desktop Connection(总是避免不了要远程桌面连windows服务器的情况)</li>
 </ul>
-<h2 id="生产力工具">生产力工具</h2><ul>
+<h2 id="生产力工具"><a href="#生产力工具" class="headerlink" title="生产力工具"></a>生产力工具</h2><ul>
 <li>Alfred 2(搜索工具)</li>
 <li>印象笔记(更新了OS El Capitan之后，系统默认的note.app就很好用了)</li>
 <li>百度云同步盘(不能选择目录进行同步，否则闪退)</li>
@@ -196,17 +196,17 @@ var _hmt = _hmt || [];
 <li>搜狗输入法</li>
 <li>Caffeine(给Macbook嗑点药，防止电脑休眠)</li>
 </ul>
-<h2 id="办公工具">办公工具</h2><ul>
+<h2 id="办公工具"><a href="#办公工具" class="headerlink" title="办公工具"></a>办公工具</h2><ul>
 <li>Microsoft Office</li>
 </ul>
-<h2 id="其他">其他</h2><ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
 <li>KeyUp(屏幕虚拟键盘，还能模拟机械键盘的声音，炒鸡炫酷)</li>
 <li>PixelPeeper(监视屏幕上一个像素点颜色变化的软件，发现颜色变化以后支持ActionScript，可以报警、关机、休眠、发邮件等等)</li>
 <li>迅雷 for Mac(总得有个下载软件。。。)</li>
 <li>VLC（解码库很全的视频播放器）</li>
 <li>CheatSheet(按住command显示快捷键,Mac 新人必备)</li>
 </ul>
-<h2 id="online_tools">online tools</h2><ul>
+<h2 id="online-tools"><a href="#online-tools" class="headerlink" title="online tools"></a>online tools</h2><ul>
 <li><a href="http://alternativeto.net" target="_blank" rel="external">http://alternativeto.net</a><br>如果你从Windows转到Mac OS X后，在Mac上找不到曾经在和Windows上用过的软件功能相似的替代品，试试这个网站吧。</li>
 <li><a href="http://www.yyyweb.com/ctools/demo.php?t=http%3A%2F%2Feditor.method.ac%2F&amp;h=2000&amp;c=&amp;n=" target="_blank" rel="external">SVG画图</a><br>在线画图，可以直接导入图片转换成svg。</li>
 <li><a href="">像素风格ico生成器</a><br>本站的logo和favico就是用这个网站画的，但是只支持生成16x16的，要想获取其他尺寸自己PS一下吧</li>
@@ -294,7 +294,7 @@ var _hmt = _hmt || [];
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/System/">System<span>3</span></a></li>
+    <li><a href="/categories/System/">System<span>4</span></a></li>
   </li>
 
     </ul>
@@ -318,7 +318,7 @@ var _hmt = _hmt || [];
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
 		   <span class="toc-title">Contents</span>
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#拿到一台新Mac首先要做什么"><span class="toc-article-text">拿到一台新Mac首先要做什么</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#开始安装软件"><span class="toc-article-text">开始安装软件</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#开发工具"><span class="toc-article-text">开发工具</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#by_Homebrew"><span class="toc-article-text">by Homebrew</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#by_Homebrew-cask"><span class="toc-article-text">by Homebrew-cask</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#普通安装"><span class="toc-article-text">普通安装</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#生产力工具"><span class="toc-article-text">生产力工具</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#办公工具"><span class="toc-article-text">办公工具</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#其他"><span class="toc-article-text">其他</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#online_tools"><span class="toc-article-text">online tools</span></a></li></ol></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#拿到一台新Mac首先要做什么"><span class="toc-article-text">拿到一台新Mac首先要做什么</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#开始安装软件"><span class="toc-article-text">开始安装软件</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#开发工具"><span class="toc-article-text">开发工具</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#by-Homebrew"><span class="toc-article-text">by Homebrew</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#by-Homebrew-cask"><span class="toc-article-text">by Homebrew-cask</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#普通安装"><span class="toc-article-text">普通安装</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#生产力工具"><span class="toc-article-text">生产力工具</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#办公工具"><span class="toc-article-text">办公工具</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#其他"><span class="toc-article-text">其他</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#online-tools"><span class="toc-article-text">online tools</span></a></li></ol></li></ol>
 		</div>
 	
 	</div>
@@ -349,7 +349,7 @@ var disqus_shortname = 'blackshow';
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2016 blackshow
+  &copy; 2017 blackshow
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
      <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    

@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>理解Linux用户和用户组 | blackshow</title>
+  <title>总有刁民想害朕——记一次vps主机防护 | blackshow</title>
   <meta name="author" content="blackshow">
   
   <meta name="description" content="This blog is a pixel style blog.It &#39;s about tech,development,life and other things.">
@@ -14,7 +14,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="理解Linux用户和用户组"/>
+  <meta property="og:title" content="总有刁民想害朕——记一次vps主机防护"/>
   <meta property="og:site_name" content="blackshow"/>
 
   
@@ -118,7 +118,7 @@ var _hmt = _hmt || [];
 
 	
 		<div class="page-header">
-			<h1> 理解Linux用户和用户组</h1>
+			<h1> 总有刁民想害朕——记一次vps主机防护</h1>
 		</div>
 	
 
@@ -135,7 +135,17 @@ var _hmt = _hmt || [];
 	<div class="mypage">		
 	  		
 
-	  <p>之前总是用root用户,觉得不正规也不安全,看了几篇linux用户和用户组介绍的帖子,总结了个MindMap。<br><img src="http://7xofqj.com1.z0.glb.clouddn.com/linux-users-and-groups.png" alt="用户和用户组"><br><a href="https://www.processon.com/view/link/567122bfe4b02f55903bbcb8" target="_blank" rel="external">MindMap的源文件</a>,欢迎修改.<br><a id="more"></a></p>
+	  <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>  上周用net-speeder给vps加速以后，这几天每天都看看使用流量，今天上午一看吓一跳，昨晚用了四个多G，<br>  而且是我睡觉的时候。莫非是被人盯上了？<br>  登录上去查看一下secure日志，发现好多尝试访问ssh的记录。不由一头冷汗。<br>  当然就网络攻击这一块，我从初二以后就没服过谁（开玩笑的，我都快吓尿了）。</p>
+<h1 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h1><p>  机智的我当然没有慌乱，上网整理了一下资料，然后开始加固安全防范.<br>  以下步骤全部基于CentOS 6.5<br><a id="more"></a></p>
+<h2 id="更换ssh端口号"><a href="#更换ssh端口号" class="headerlink" title="更换ssh端口号"></a>更换ssh端口号</h2><p>  我这次遇到的攻击是企图暴力破解root密码，更换个端口号会增大很多难度。<br>  修改<code>/etc/ssh/sshd_config</code>,搜索<code>Port 22</code>，随便成一个你喜欢的数字。。<br>  然后重启ssh，<code>service sshd restart</code></p>
+<blockquote>
+<p>注意:<code>/etc/ssh</code>下有一个<code>ssh_config</code>的文件，注意是修改<code>sshd_config</code>，不是<code>ssd_config</code></p>
+</blockquote>
+<h2 id="创建新用户-屏蔽root用户登录"><a href="#创建新用户-屏蔽root用户登录" class="headerlink" title="创建新用户,屏蔽root用户登录"></a>创建新用户,屏蔽root用户登录</h2>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建用户</span></div><div class="line">useradd 用户名</div><div class="line"><span class="comment"># 修改密码</span></div><div class="line">passwd 用户名</div><div class="line"><span class="comment"># 加权限</span></div><div class="line">usermod -g root 用户名</div></pre></td></tr></table></figure>
+<p>  修改<code>/etc/ssh/sshd_config</code>,搜索<code>PermitRootLogin yes</code>，改成<code>PermitRootLogin no</code>.<br>  重启sshd服务<br>  然后以后用新建的用户登录。</p>
+<h2 id="黑名单"><a href="#黑名单" class="headerlink" title="黑名单"></a>黑名单</h2><p>  定时扫描/var/log/secure日志，发现有多次尝试用户名密码登录的ip，加入hosts.deny<br>  扫描日志脚本如下：<br>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">cat /var/<span class="built_in">log</span>/secure|awk <span class="string">'/Failed/&#123;print $(NF-3)&#125;'</span>|sort|uniq -c|awk <span class="string">'&#123;print $2"="$1;&#125;'</span> &gt; /root/black.txt</div><div class="line"><span class="comment"># 定义攻击次数,2次密码输错就视为攻击</span></div><div class="line">DEFINE=<span class="string">"2"</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `cat ./black.txt`</div><div class="line"><span class="keyword">do</span></div><div class="line">IP=`<span class="built_in">echo</span> <span class="variable">$&#123;i&#125;</span>|awk -F= <span class="string">'&#123;print $1&#125;'</span>`</div><div class="line">NUM=`<span class="built_in">echo</span> <span class="variable">$&#123;i&#125;</span>|awk -F= <span class="string">'&#123;print $2&#125;'</span>`</div><div class="line"><span class="keyword">if</span> [ <span class="variable">$&#123;NUM&#125;</span> <span class="_">-gt</span> <span class="variable">$&#123;DEFINE&#125;</span> ];<span class="keyword">then</span></div><div class="line">sed -i <span class="string">'/'</span><span class="variable">$&#123;IP&#125;</span><span class="string">'/d'</span> /etc/hosts.deny</div><div class="line"><span class="keyword">if</span> [ $? &gt; 0 ];<span class="keyword">then</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"sshd:<span class="variable">$IP</span>:deny"</span> &gt;&gt; /etc/hosts.deny</div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure></p>
+<p>  暂时命名为scan_attack.sh,加权限。<br>  定时设置如下(每分钟扫描一次):<br>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">crontab <span class="_">-e</span></div><div class="line">* * * * * /to/path/scan_attack.sh</div></pre></td></tr></table></figure></p>
+<p>  至此本次防御工作就全部结束了。当然也可以配置白名单，但是每次到新环境上网都要改觉得比较麻烦。</p>
 	  
 	</div>
 
@@ -145,13 +155,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a href="/2016/01/31/derived-merge-bug-on-mysql5.7/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2015/12/08/my-book-list/" type="button" class="btn btn-default ">Next<i
+    <a href="/2016/05/29/https-flow/" type="button" class="btn btn-default ">Next<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -205,7 +214,7 @@ var _hmt = _hmt || [];
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	Dec 16 2015 
+	Jun 30 2017 
 	</div>
 	
 

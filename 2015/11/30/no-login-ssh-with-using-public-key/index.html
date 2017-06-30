@@ -136,23 +136,23 @@ var _hmt = _hmt || [];
 	  		
 
 	  <p>每次ssh的时候都要输入密码很烦,密码太简单不安全，密码复杂了输起来很麻烦，下面介绍一下如何配置公钥实现免密码登陆.</p>
-<h1 id="产生及查看公钥">产生及查看公钥</h1><ol>
+<h1 id="产生及查看公钥"><a href="#产生及查看公钥" class="headerlink" title="产生及查看公钥"></a>产生及查看公钥</h1><ol>
 <li>打开终端,查看~/.ssh目录下是否有id_rsa.pub文件，如果有可以直接跳过下面第二步,如果没有，请看第二步.<a id="more"></a></li>
-<li>生成RSA密钥<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youname@domain.com"</span></span><br></pre></td></tr></table></figure>
+<li>生成RSA密钥<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C <span class="string">"youname@domain.com"</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="把公钥添加到服务器信任列表">把公钥添加到服务器信任列表</h1><ol>
+<h1 id="把公钥添加到服务器信任列表"><a href="#把公钥添加到服务器信任列表" class="headerlink" title="把公钥添加到服务器信任列表"></a>把公钥添加到服务器信任列表</h1><ol>
 <li>打开id_rsa.pub文件，拷贝除『yourname@domain.com』之外的部分，也就是”ssh -rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQ…”.</li>
 <li>ssh登录你的服务器,进入~/.ssh目录,建立authorized_keys文件，添加刚才拷贝的内容,保存并退出.<br>至此，免密码ssh配置完成.</li>
 </ol>
-<h1 id="用途">用途</h1><p>目前我的用途是:</p>
+<h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><p>目前我的用途是:</p>
 <ol>
-<li>开机自动建立sock5代理:<br> 新建一个脚本，我取名为<code>vps.login</code>,里面内容如下: <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span> ssh -D <span class="number">7070</span> root@my-vps-domain || <span class="literal">true</span>; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<li>开机自动建立sock5代理:<br> 新建一个脚本，我取名为<code>vps.login</code>,里面内容如下: <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span> ssh -D 7070 root@my-vps-domain || <span class="literal">true</span>; <span class="keyword">done</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>然后加到开启启动中,这样我就可以生活在墙外了.</p>
 <ol>
-<li>持续集成定时更新:<br> 由于现在ssh登录不需要密码,那么scp命令也不用输入密码了,可以利用scp命令把持续集成服务器打好的包定时传送到测试服务器,并用ssh命令重启测试服务器的服务.实现自动化持续集成. <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># scp 命令传递文件</span></span><br><span class="line">scp -r ./some files root@my-vps-domain:/path</span><br><span class="line"><span class="comment"># ssh 远程执行命令</span></span><br><span class="line">ssh root@my-vps-domain <span class="string">"shell scripts"</span></span><br></pre></td></tr></table></figure>
+<li>持续集成定时更新:<br> 由于现在ssh登录不需要密码,那么scp命令也不用输入密码了,可以利用scp命令把持续集成服务器打好的包定时传送到测试服务器,并用ssh命令重启测试服务器的服务.实现自动化持续集成. <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># scp 命令传递文件</span></div><div class="line">scp -r ./some files root@my-vps-domain:/path</div><div class="line"><span class="comment"># ssh 远程执行命令</span></div><div class="line">ssh root@my-vps-domain <span class="string">"shell scripts"</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 	  
@@ -235,7 +235,7 @@ var _hmt = _hmt || [];
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/System/">System<span>3</span></a></li>
+    <li><a href="/categories/System/">System<span>4</span></a></li>
   </li>
 
     </ul>
@@ -248,7 +248,7 @@ var _hmt = _hmt || [];
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/linux/">linux<span>2</span></a></li>
+  <li><a href="/tags/linux/">linux<span>3</span></a></li>
     </ul>
 	</div>
 		
@@ -284,7 +284,7 @@ var disqus_shortname = 'blackshow';
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2016 blackshow
+  &copy; 2017 blackshow
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
      <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
