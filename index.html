@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>blackshow</title>
+  <meta name="author" content="blackshow">
+  
+  <meta name="description" content="This blog is a pixel style blog.It &#39;s about tech,development,life and other things.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="blackshow"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">blackshow</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 <div class="page-header logo">
+  <h1>Ever youthful,ever weeping<span class="blink-fast">∎</span></h1>
+</div>
+
+<div class="row page">
+
+	
+	<div class="col-md-9">
+	
+
+		<div class="slogan">
+
+
+		<i class="fa fa-heart blink-slow"></i>
+
+		Keep and carry on.
+
+</div>    
+
+		<div id="top_search"></div>
+		<div class="mypage">
+		
+		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2017/06/30/vps-security/" >总有刁民想害朕——记一次vps主机防护</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ Jun 30 2017  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>  上周用net-speeder给vps加速以后，这几天每天都看看使用流量，今天上午一看吓一跳，昨晚用了四个多G，<br>  而且是我睡觉的时候。莫非是被人盯上了？<br>  登录上去查看一下secure日志，发现好多尝试访问ssh的记录。不由一头冷汗。<br>  当然就网络攻击这一块，我从初二以后就没服过谁（开玩笑的，我都快吓尿了）。</p>
+<h1 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h1><p>  机智的我当然没有慌乱，上网整理了一下资料，然后开始加固安全防范.<br>  以下步骤全部基于CentOS 6.5<br>
+	
+	</div>
+  <a type="button" href="/2017/06/30/vps-security/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2016/04/01/RSA-algorithm/" title="RSA算法是最重要的非对称加密算法之一.转自阮一峰老师的博客.">RSA非对称公钥加密算法原理</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ Apr 1 2016  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>涉及到的数学知识:<a href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html</a><br>算法具体实现:<a href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html</a></p>
+
+	
+	</div>
+  <a type="button" href="/2016/04/01/RSA-algorithm/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2016/01/31/derived-merge-bug-on-mysql5.7/" >『You can&#39;t specify target table &#39;t1&#39; for update in FROM clause』 bug 解决</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ Jan 31 2016  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+           
+              <div class="thumbnail"><a href="/2016/01/31/derived-merge-bug-on-mysql5.7/"><img src="/images/thumbnails/mysql.png" alt="『You can&#39;t specify target table &#39;t1&#39; for update in FROM clause』 bug 解决"  class="nofancybox"></a>
+           
+		</div>
+	
+	
+		<p>前几天升级了Mysql 5.7,昨天在测试一个很久没改动的系统时一条Sql报了这个bug『You can’t specify target table ‘t1’ for update in FROM clause』。<br>用排除法分析了一下,发现只有在Mysql 5.7上才能重现,遂上网查找了一下Mysql 5.7的Release note,发现确实是Mysql在这方面进行了更改。原文如下:<br>As of MySQL 5.7.6, the optimizer handles propagation of an ORDER BY clause in a derived table or view reference to the outer query block by propagating the ORDER BY clause if the following conditions apply: The outer query is not grouped or aggregated; does not specify DISTINCT, HAVING, or ORDER BY; and has this derived table or view reference as the only source in the FROM clause. Otherwise, the optimizer ignores the ORDER BY clause. Before MySQL 5.7.6, the optimizer always propagated ORDER BY, even if it was irrelevant or resulted in an invalid query.</p>
+<blockquote>
+<p>For statements such as DELETE or UPDATE that modify tables, using the merge strategy for a derived table that prior to MySQL 5.7.6 was materialized can result in an ER_UPDATE_TABLE_USED error:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; DELETE FROM t1</div><div class="line">    -&gt; WHERE id IN (SELECT id</div><div class="line">    -&gt;              FROM (SELECT t1.id</div><div class="line">    -&gt;                    FROM t1 INNER JOIN t2 USING (id)</div><div class="line">    -&gt;                    WHERE t2.status = 0) AS t);</div><div class="line">ERROR 1093 (HY000): You can<span class="string">'t specify target table '</span>t1<span class="string">'</div><div class="line">for update in FROM clause</span></div></pre></td></tr></table></figure></p>
+<p>The error occurs when merging a derived table into the outer query block results in a statement that both selects from and modifies a table. (Materialization does not cause the problem because, in effect, it converts the derived table to a separate table.) To avoid this error, disable the derived_merge flag of the optimizer_switch system variable before executing the statement:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET optimizer_switch = <span class="string">'derived_merge=off'</span>;</div></pre></td></tr></table></figure></p>
+</blockquote>
+	
+	</div>
+  <a type="button" href="/2016/01/31/derived-merge-bug-on-mysql5.7/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2015/12/16/understand-linux-users-and-groups/" >理解Linux用户和用户组</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ Dec 16 2015  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>之前总是用root用户,觉得不正规也不安全,看了几篇linux用户和用户组介绍的帖子,总结了个MindMap。<br><img src="/images/linux-users-and-groups.png" alt="用户和用户组"><br><a target="_blank" rel="noopener" href="https://www.processon.com/view/link/567122bfe4b02f55903bbcb8">MindMap的源文件</a>,欢迎修改.<br>
+	
+	</div>
+  <a type="button" href="/2015/12/16/understand-linux-users-and-groups/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2015/12/08/my-book-list/" >我的书单(持续更新)</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ Dec 8 2015  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="2018"><a href="#2018" class="headerlink" title="2018"></a>2018</h1><ul>
+<li>Docker In Action</li>
+<li>Spring Cloud与Docker 微服务架构实战</li>
+</ul>
+<h1 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h1><ul>
+<li><a target="_blank" rel="noopener" href="http://www.duokan.com/book/95055">1984</a><br>第一次知道这本书是因为被封很多年的那个1984bbs,读完了之后感觉毛骨悚然,第一次感受到文字的力量如此强大。<br>本书描述了一个极度集权的病态社会,和天朝差不多,度过了以后有种设身处地的感觉。</li>
+</ul>
+<h1 id="2015"><a href="#2015" class="headerlink" title="2015"></a>2015</h1><ul>
+<li><p><a target="_blank" rel="noopener" href="http://www.amazon.cn/gp/product/B015YYTZN4?psc=1&amp;ref_=oh_aui_d_detailpage_o00_">年薪20万到80万的进击——高端程序员如何跳槽</a><br>与其说是一本书,其实就是一片文章,是100offer写的,通过数据分析展现人才流向,看完之后对100offer的好感倍生,比拉勾什么的靠谱多了。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.amazon.cn/gp/product/B014IIMEEY?psc=1&amp;ref_=oh_aui_d_detailpage_o00_">快速阅读训练法(大脑潜能开发书系)</a><br>里面主要讲了快速阅读的训练方法,归结起来就是<code>只看不读(默读也不行)</code>和<code>锻炼眼部肌肉力量,看书的时候以线代点,以面带线</code>,准备试试里面的训练方法,<br>看看是否真的有效。不过看技术性书籍应该是不适合的。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://yeasy.gitbooks.io/docker_practice/content/">Docker–从入门到实践</a><br>通读了此书,对Docker有了初步的了解,掌握了docker的基本操作,但是集群方式还没有试,以后有时间试试。此书十分推荐,无论是开发还是运维,都应该了解并使用docker。<br>因为docker太cool,和git一样cool。</p>
+</li>
+</ul>
+	
+	</div>
+  <a type="button" href="/2015/12/08/my-book-list/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+
+		</div>
+
+		<!-- pagination -->
+		<div>
+  		<center>
+		<div class="pagination">
+
+   
+    
+           <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+        
+
+        <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+ 
+       <a href="/page/2/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>     
+        
+
+  
+</div>
+
+  		</center>
+		</div>
+
+		
+		
+	</div> <!-- col-md-9 -->
+
+	
+		<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+  <div id="site_search">
+   <div class="form-group">
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+   </div>  
+  <div id="local-search-result"></div>
+  </div>
+
+
+		
+			
+	<div class="widget">
+		<h4>Categories</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/Book/">Book<span>1</span></a></li>
+		
+			<li><a href="/categories/Database/">Database<span>1</span></a></li>
+		
+			<li><a href="/categories/Front/">Front<span>3</span></a></li>
+		
+			<li><a href="/categories/System/">System<span>4</span></a></li>
+		
+			<li><a href="/categories/dev/">dev<span>1</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>Tag Cloud</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/life/">life<span>1</span></a></li>
+		
+			<li><a href="/tags/github/">github<span>1</span></a></li>
+		
+			<li><a href="/tags/PKI/">PKI<span>1</span></a></li>
+		
+			<li><a href="/tags/tools/">tools<span>1</span></a></li>
+		
+			<li><a href="/tags/mysql/">mysql<span>1</span></a></li>
+		
+			<li><a href="/tags/hexo/">hexo<span>3</span></a></li>
+		
+			<li><a href="/tags/linux/">linux<span>3</span></a></li>
+		
+			<li><a href="/tags/dev/">dev<span>1</span></a></li>
+		
+			<li><a href="/tags/Mac/">Mac<span>1</span></a></li>
+		
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>Recent Posts</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2017/06/30/vps-security/" ><i class="fa fa-file-o"></i>总有刁民想害朕——记一次vps主机防护</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/01/RSA-algorithm/"  title="RSA算法是最重要的非对称加密算法之一.转自阮一峰老师的博客." ><i class="fa fa-file-o"></i>RSA非对称公钥加密算法原理</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/31/derived-merge-bug-on-mysql5.7/" ><i class="fa fa-file-o"></i>『You can&#39;t specify target t...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/12/16/understand-linux-users-and-groups/" ><i class="fa fa-file-o"></i>理解Linux用户和用户组</a>
+      </li>
+    
+      <li>
+        <a href="/2015/12/08/my-book-list/" ><i class="fa fa-file-o"></i>我的书单(持续更新)</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/wzpan/hexo-theme-freemind" title="Freemind's Github repository." target="_blank"]);">Freemind</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/kristopolous/BOOTSTRA.386" title="BOOTSTRA.386's Github repository." target="_blank"]);">BOOTSTRA.386</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/blackshow/hexo-theme-freemind.386" title="Freemind.386's Github repository." target="_blank"]);">Freemind.386</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/blackshow" title="My Github account." target="_blank"]);">My Github</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+	
+	
+</div> <!-- row-fluid -->
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 blackshow
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

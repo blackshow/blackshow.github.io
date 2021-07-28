@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Hexo使用心得(持续更新) | blackshow</title>
+  <meta name="author" content="blackshow">
+  
+  <meta name="description" content="Hexo使用的一些小技巧">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo使用心得(持续更新)"/>
+  <meta property="og:site_name" content="blackshow"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">blackshow</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Hexo使用心得(持续更新)</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> Hexo使用的一些小技巧
+		 </div> <!-- alert -->
+	  		
+
+	  <p>本文记录一下我使用Hexo的心得.<br>我是使用Webstorm作为Hexo写作的Markdown编辑器,所有Jetbrains旗下的IDE都可以使用.</p>
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><p>下面是我配置Hexo命令的alias:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># hexo</span></div><div class="line"><span class="built_in">alias</span> hx=<span class="string">"hexo"</span></div><div class="line"><span class="comment"># 新建文章</span></div><div class="line"><span class="built_in">alias</span> hxn=<span class="string">"hexo n"</span></div><div class="line"><span class="comment"># 部署到远程服务器</span></div><div class="line"><span class="built_in">alias</span> hxd=<span class="string">"hexo d -g"</span></div><div class="line"><span class="comment"># 生成静态文件</span></div><div class="line"><span class="built_in">alias</span> hxg=<span class="string">"hexo g"</span></div><div class="line"><span class="comment"># 启动本地预览(预览草稿)</span></div><div class="line"><span class="built_in">alias</span> hxs=<span class="string">"hexo server -l --drafts"</span></div><div class="line"><span class="comment"># 清除Hexo缓存</span></div><div class="line"><span class="built_in">alias</span> hxc=<span class="string">"rm -f ~/blog/db.json &amp;&amp; hexo clean"</span></div><div class="line"><span class="comment"># 把草稿发布为post</span></div><div class="line"><span class="built_in">alias</span> hxp=<span class="string">"hexo public post "</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<blockquote>
+<p>其中hxc命令,如果只用hexo clean,则不会删除db.json,生成的tag和categories缓存无法同步删除</p>
+</blockquote>
+<h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><p>Markdown的编辑器,我试了几个,比如Mou,CMDMarkdown,MacMarkdown,后来发现都没有Webstorm方便.<br>当然,用Intellij、PhpStorm这些Jetbrains系的IDE都是一样的.<br>我现在用WebStorm写Markdown,是这样配置的:</p>
+<ul>
+<li>首先你要安装一下Markdown的插件，让你的IDE支持Markdown.</li>
+<li>打开 <code>Settings</code> &gt; <code>Editor</code> &gt; <code>File and code Templates</code>,新建一个Markdown的Templates,我的Template配置如下:</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">title: <span class="variable">$&#123;title&#125;</span></div><div class="line">date: <span class="variable">$&#123;YEAR&#125;</span>-<span class="variable">$&#123;MONTH&#125;</span>-<span class="variable">$&#123;DAY&#125;</span> <span class="variable">$&#123;HOUR&#125;</span>:<span class="variable">$&#123;MINUTE&#125;</span>:31</div><div class="line">description: <span class="variable">$&#123;description&#125;</span></div><div class="line">categories: <span class="variable">$&#123;categories&#125;</span></div><div class="line">tags: [<span class="variable">$&#123;tags&#125;</span>] </div><div class="line">toc: <span class="variable">$&#123;isTocAllowed&#125;</span></div><div class="line">feature: <span class="variable">$&#123;thumbnails_url&#125;</span></div><div class="line">---</div><div class="line"></div><div class="line">&lt;!-- more --&gt;</div></pre></td></tr></table></figure>
+<p>这样以后我就不用通过hexo n 来创建新文章了.右键点击hexo/source/_posts,选择 <code>new</code> &gt; <code>Markdown</code>:<br><img src="/images/markdown-file-header.png" alt="alt"><br>全部输入完毕，点击ok，文章的头部就生成好了.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">title: Hexo搭建博客</div><div class="line">date: 2015-11-27 12:01:31</div><div class="line">description: 本文主要介绍我在搭建Hexo的时候遇到的问题和解决方法,搭建过程只是简单描述.</div><div class="line">categories: code</div><div class="line">tags: [hexo,github] </div><div class="line">toc: <span class="literal">true</span></div><div class="line">feature: /avatar_pixel.png-thumbnails </div><div class="line">---</div></pre></td></tr></table></figure>
+<ul>
+<li>使用Live Templates<br>我最终选择用Webstorm来写博客而没有用其他Markdown编辑器主要是因为IDE的Live Templates.<br>请参考一下<a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">Hexo的Tag Plugins</a>,这些标签插件,如果手写的话，无疑问是一种折磨.<br>这时候我们可以用Live Templates解决了.</li>
+</ul>
+<ol>
+<li>打开 <code>Settings</code> &gt; <code>Editor</code> &gt; <code>Live Templates</code>,点击 <code>+</code> ,新建一个Template Group,取名 <code>Markdown</code>.</li>
+<li>选择 <code>Markdown</code> ,点击 <code>+</code>,新建一个Live Template,以代码块插件为例,如下图:<br><img src="/images/codeblock.png" alt="alt"><br><code>apply</code> 保存,然后右键点击 <code>cb</code> ,选择 <code>Change context</code> ,指定Live Template生效的范围.</li>
+<li>保存之后,输入c应该就会有提示了,输入cb然后Tab,你懂的。。。</li>
+</ol>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="/2015/12/08/my-book-list/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2015/11/30/no-login-ssh-with-using-public-key/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	Nov 30 2015 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Front/">Front<span>3</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/hexo/">hexo<span>3</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'blackshow';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 blackshow
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a target="_blank" rel="noopener" href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
